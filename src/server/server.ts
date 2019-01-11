@@ -1,6 +1,7 @@
 import * as express from 'express';
 import {sequelize} from './database';
 import {currencies} from './routes/currencyRouter';
+import * as bodyParser from 'body-parser';
 
 const hostname = 'localhost';
 const port = 3000;
@@ -11,7 +12,6 @@ server.get('/api/', (req, res, next) => {
    res.setHeader('Content-Type', 'text/plain');
    res.end('Hello World');
 });
-
 
 // allow access from client server
 server.use(function (req, res, next) {
@@ -31,6 +31,10 @@ server.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
+
+server.use(bodyParser.json());
+
+server.use(bodyParser.urlencoded({extended: true}));
 
 // initiate connection to db
 const mysequelize = sequelize;

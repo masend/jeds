@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Currency } from '../../server/models/currencymodel';
 import { ApiService } from '../api.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-currency-converter',
@@ -22,7 +23,13 @@ export class CurrencyConverterComponent implements OnInit {
   }
 
   addCurrency() {
-    // this.apiService.addData('currencies', currency);
+    const currency = {
+      'country': 'South Africa',
+      'exchangerate': 1400,
+      'createdAt': moment(new Date()),
+      'updatedAt': moment(new Date())
+    };
+    this.apiService.addData('currencies', currency).subscribe();
     console.log('currency has been added');
   }
 }
