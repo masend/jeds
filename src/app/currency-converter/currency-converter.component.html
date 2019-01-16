@@ -1,8 +1,24 @@
-currency converter: 
+<form class="justify-content-center col-md-5">
+  <div class="form-group">
+    <label for="country">Country</label>
+    <input type="text" class="form-control" id="country" placeholder="Enter country" [(ngModel)]="country" name="country">
+  </div>
+  
+  <div class="form-group">
+    <label for="exchangerate">Exchange rate</label>
+    <input type="number" class="form-control" id="exchangeRate" placeholder="Enter exchange rate" [(ngModel)]="exchangeRate" name="exchangeRate">
+  </div>
+
+  <button (click)="addCurrency()">Add Currency</button>
+  <button (click)="refresh()">Refresh</button>
+</form>
+
+Current currencies: 
 <p>
-  <li *ngFor="let currency of currencydata">
-      {{$index}} {{currency.country}} : {{currency.exchangerate}}
-  </li>
+  <!-- <ul [(ngModel)]="currencydata"> -->
+      <li *ngFor="let currency of currencydata">
+          {{$index}} {{currency.country}} : {{currency.exchangerate}}
+      </li>
+  <!-- </ul> -->
 </p>
 
-<button (click)="addCurrency()">Add Currency</button>
